@@ -19,3 +19,5 @@ Imports:
     sf,
     DBI,
     RPostgres
+URL: https://github.com/TashBes/createDB
+BugReports: https://github.com/TashBes/createDB/issues
