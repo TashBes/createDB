@@ -16,4 +16,6 @@ Imports:
     stringr,
     rlang,
     taxize,
-    sf
+    sf,
+    DBI,
+    RPostgres
