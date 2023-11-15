@@ -1,6 +1,6 @@
 extract_accs <- function(MDBPATH) {
 
-  requireNamespace() #to be able to pipe
+  requireNamespace(magrittr) #to be able to pipe
 
   # Define connection strings
   dbq_string <- paste0("DBQ=", getwd(),MDBPATH)
