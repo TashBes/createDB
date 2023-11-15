@@ -18,7 +18,9 @@
 #'@importFrom magrittr  %>%
 #'@importFrom rlang :=
 #'
-#' @example clean_names(species_names, scientific_name)
+#' @examples
+#' # example code
+#'  clean_names(species_names, scientific_name)
 #'
 #' @export
 clean_names <- function(DF, SP_COL) {
@@ -60,7 +62,9 @@ clean_names <- function(DF, SP_COL) {
 #'@importFrom taxize  get_wormsid
 #'@importFrom magrittr  %>%
 #'
-#' @example clean_aphiaid(species_names, scientific_name, "FM")
+#' @examples
+#' # example code
+#'  clean_aphiaid(species_names, scientific_name, "FM")
 #' @export
 clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
 
@@ -126,7 +130,9 @@ clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
 #'@importFrom dplyr  left_join
 #'@importFrom magrittr  %>%
 #'
-#' @example clean_area(species_locations, "longitude", "Latitude")
+#' @examples
+#' # example code
+#'  clean_area(species_locations, "longitude", "Latitude")
 #' @export
 clean_area <- function(DF,LON, LAT) {
 

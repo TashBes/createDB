@@ -25,3 +25,7 @@ DB_PORT, DB_USER, and DB_PASSWORD with an = after each and the
 relevant value. Then run the code, save the file as .Renviron,
 and exit and restart R.
 }
+\examples{
+# example code
+ con <- sql_con("occur_stage")
+}

@@ -22,3 +22,7 @@ Returns the dataframe with only the values that fall with the eez
 This function test if locations fall within the marine EEZ with a buffer
 of 2km, and drops all other values.
 }
+\examples{
+# example code
+ clean_area(species_locations, "longitude", "Latitude")
+}

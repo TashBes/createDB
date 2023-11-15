@@ -18,7 +18,9 @@
 #'@importFrom DBI  dbConnect
 #'@importFrom RPostgres  Postgres
 #'
-#' @example con <- sql_con("occur_stage")
+#' @examples
+#' # example code
+#'  con <- sql_con("occur_stage")
 #' @export
 sql_con <- function(DBNAME) {
 
@@ -65,7 +67,9 @@ sql_con <- function(DBNAME) {
 #'@importFrom stringr  str_detect
 #'@importFrom RODBC  odbcCloseAll
 #'
-#' @example sql_tbl_ext("occur_stage", "fm")
+#' @examples
+#' # example code
+#'  sql_tbl_ext("occur_stage", "fm")
 #' @export
 sql_tbl_ext <- function(DBNAME , STR) {
 

@@ -19,3 +19,7 @@ Returns the dataframe with the aphia ID's as a new column
 \description{
 This function matches species names in a dataframe to worms id numbers
 }
+\examples{
+# example code
+ clean_aphiaid(species_names, scientific_name, "FM")
+}
