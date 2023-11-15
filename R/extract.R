@@ -1,6 +1,33 @@
+#' Load tables from access
+#'
+#' This function loads tables in an access database into r as
+#' dataframes with the same name as the access tables.
+#'
+#' @param MDBPATH Path to the access database. Remeber to ass the back slash
+#' before the first folder name. If you are working in a project the file path
+#' should only be the part from the project onwards.
+#' @return Returns all tables in the access database as r dataframes
+#' with the same name.
+#'
+#' @export
+#'
+#'@importFrom RODBC odbcDriverConnect
+#'@importFrom RODBC sqlTables
+#'@importFrom RODBC sqlFetch
+#'@importFrom RODBC odbcCloseAll
+#'@importFrom dplyr  filter
+#'@importFrom dplyr  select
+#'@importFrom magrittr  %>%
+#'
+#' @examples
+#' # example code - this won't run but is for you to see the correct formatting
+#'  extract_accs("/data/FishMaster.accdb")
+#'
+#'
+#'
 extract_accs <- function(MDBPATH) {
 
-  requireNamespace(magrittr) #to be able to pipe
+  #requireNamespace(magrittr) #to be able to pipe
 
   # Define connection strings
   dbq_string <- paste0("DBQ=", getwd(),MDBPATH)
