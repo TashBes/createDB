@@ -38,14 +38,12 @@ extract_accs <- function(MDBPATH) {
   conAcc <- RODBC::odbcDriverConnect(db_connect_string)
 
   #create list of tables in the database
-  TABLES <- RODBC::sqlTables(conAcc)
-
-  TABLE_NAMES <-TABLES %>%
-    dplyr::filter(TABLES$TABLE_TYPE == "TABLE") %>%
-    dplyr::select(TABLES$TABLE_NAME)
+  TABLES <- RODBC::sqlTables(conAcc) %>%
+    dplyr::filter(TABLE_TYPE == "TABLE") %>%
+    dplyr::select(TABLE_NAME)
 
   ## Iterate through list of tables to get a vector of their names
-  for (tbl_names in TABLE_NAMES) {
+  for (tbl_names in TABLES) {
   }
 
   for(tbl in tbl_names) {
