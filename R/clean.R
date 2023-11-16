@@ -151,13 +151,12 @@ clean_area <- function(DF,LON, LAT) {
   ##Remove inland locations
 
   inland_loc <- int %>%
-    dplyr::select(-c(int$OBJECTID, int$PROVINCE, int$Source, int$Shape_Leng, int$Shape_Area))
-  # %>%
-  #   sf::st_transform(sf::st_crs(4326)) %>%
-  #   dplyr::mutate({{LON}} := sf::st_coordinates(.)[,1],
-  #          {{LAT}} := sf::st_coordinates(.)[,2]) %>%
-  #   sf::st_drop_geometry()%>%  ## Drop the geometry column to make it a normal dataframe again
-  #   dplyr::left_join({{DF}})
+ #   dplyr::select(-c(int$OBJECTID, int$PROVINCE, int$Source, int$Shape_Leng, int$Shape_Area))%>%
+    sf::st_transform(sf::st_crs(4326)) %>%
+    dplyr::mutate({{LON}} := sf::st_coordinates(.)[,1],
+           {{LAT}} := sf::st_coordinates(.)[,2]) %>%
+    sf::st_drop_geometry()%>%  ## Drop the geometry column to make it a normal dataframe again
+    dplyr::left_join({{DF}})
 
 }
 
