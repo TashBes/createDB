@@ -15,6 +15,11 @@
 #' in the original column
 #'
 #'@importFrom dplyr  filter
+#'@importFrom dplyr  mutate
+#'@importFrom stringr  str_squish
+#'@importFrom stringr  str_replace_all
+#'@importFrom stringr  str_detect
+#'@importFrom Hmisc  capitalize
 #'@importFrom magrittr  %>%
 #'@importFrom rlang :=
 #'
