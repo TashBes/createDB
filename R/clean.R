@@ -1,12 +1,12 @@
 ##
 #'Clean the most generic errors in species names
 #'
-#' This function fixs the most common errors found in species names,
+#' This function fixes the most common errors found in species names,
 #' mainly being:
 #' removing spaces at the begining or ends of the words,
 #' removing any numbers or dots,
-#' removing any instances of spp or sp
-#' removing any punctuation
+#' removing any instances of spp or sp,
+#' removing any punctuation,
 #' capitalising the first word.
 #'
 #' @param DF The dataframe to run the function on
