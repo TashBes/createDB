@@ -18,6 +18,8 @@ Imports:
     taxize,
     sf,
     DBI,
-    RPostgres
+    RPostgres,
+    lubridate,
+    chron
 URL: https://github.com/TashBes/createDB
 BugReports: https://github.com/TashBes/createDB/issues
