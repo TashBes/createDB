@@ -20,6 +20,7 @@ Imports:
     DBI,
     RPostgres,
     lubridate,
-    chron
+    chron,
+    tidyr
 URL: https://github.com/TashBes/createDB
 BugReports: https://github.com/TashBes/createDB/issues
