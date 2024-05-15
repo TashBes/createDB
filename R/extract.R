@@ -29,8 +29,11 @@ extract_accs <- function(MDBPATH) {
 
   #requireNamespace(magrittr) #to be able to pipe
 
+  #define path
+  pth <- list.files(path=here("data"), recursive = TRUE, pattern = MDBPATH, full.names = T)
+
   # Define connection strings
-  dbq_string <- paste0("DBQ=", getwd(),MDBPATH)
+  dbq_string <- paste0("DBQ=", pth)
   driver_string <- "Driver={Microsoft Access Driver (*.mdb, *.accdb)};"
   db_connect_string <- paste0(driver_string, dbq_string)
 
