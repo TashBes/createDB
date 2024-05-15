@@ -30,7 +30,7 @@ extract_accs <- function(MDBPATH) {
   #requireNamespace(magrittr) #to be able to pipe
 
   #define path
-  pth <- list.files(path=here("data"), recursive = TRUE, pattern = MDBPATH, full.names = T)
+  pth <- list.files(path="data", recursive = TRUE, pattern = MDBPATH, full.names = T)
 
   # Define connection strings
   dbq_string <- paste0("DBQ=", pth)
