@@ -1,13 +1,13 @@
 #' Load tables from access
 #'
 #' This function loads tables in an access database into r as
-#' dataframes with the same name as the access tables.
+#' dataframes with the same name as the access tables. If there are multiple
+#' files with the same name it will take the first instance found, which
+#' will be the file closest to the data root folder. 
 #'
-#' @param MDBPATH Path to the access database. Remeber to ass the back slash
-#' before the first folder name. If you are working in a project the file path
-#' should only be the part from the project onwards.
+#' @param MDBFILE File name of the access database with the extention. 
 #' @return Returns all tables in the access database as r dataframes
-#' with the same name.
+#' with the same names.
 #'
 #' @export
 #'
@@ -21,16 +21,16 @@
 #'
 #' @examples
 #' # example code - this won't run but is for you to see the correct formatting
-#'  extract_accs("/data/FishMaster.accdb")
+#'  extract_accs("FishMaster.accdb")
 #'
 #'
 #'
-extract_accs <- function(MDBPATH) {
+extract_accs <- function(MDBFILE) {
 
   #requireNamespace(magrittr) #to be able to pipe
 
   #define path
-  pth <- list.files(path="data", recursive = TRUE, pattern = MDBPATH, full.names = T)
+  pth <- (list.files(path="data", recursive = TRUE, pattern = MDBFILE, full.names = T)[1])
 
   # Define connection strings
   dbq_string <- paste0("DBQ=", pth)
