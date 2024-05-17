@@ -112,14 +112,17 @@ clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
 ##
 #'Restrict locations to with the eez
 #'
-#' This function test if locations fall within the marine EEZ with a buffer
-#' of 2km, and drops all other values.
+#' This function test if locations fall within an area, with an optional buffer
+#' and drops all other values.
 #'
 #' @param DF The dataframe to run the function on
 #' @param LON The column with the longitude values (as decimals). Should be a
 #' character in inverted commas.
 #' @param LAT The column with the latitude values (as decimals). Should be a
 #' character in inverted commas.
+#' @param AREA The shape file you want to crop your data to. Should be the name
+#' of the shape file plus the file extension.
+#' @param BUFFER A numeric variable of the buffer zone in meters to be used
 #' @return Returns the dataframe with only the values that fall with the eez
 #'
 #'@importFrom sf  st_read
@@ -137,12 +140,12 @@ clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
 #'
 #' @examples
 #' # example code
-#'  clean_area(species_locations, "longitude", "Latitude")
+#'  clean_area(species_locations, "longitude", "Latitude", "EEZ_South_Africa_buffered_beyond_allEEZversions1.shp", 2000)
 #' @export
-clean_area <- function(DF,LON, LAT) {
+clean_area <- function(DF,LON, LAT, AREA, BUFFER) {
 
 
-  eez <- sf::st_read("data/EEZ_South_Africa_buffered_beyond_allEEZversions1.shp")
+  eez <- st_read((dir(path = ".", AREA, full.names = T, recursive = T)[1]))
 
   map <- DF %>%
     sf::st_as_sf(coords = c({{LON}},{{LAT}}))%>%
@@ -150,7 +153,7 @@ clean_area <- function(DF,LON, LAT) {
     sf::st_transform(sf::st_crs(eez))
 
   ##buffer the eez by 20km
-  buff <- sf::st_buffer(eez, 2000)
+  buff <- sf::st_buffer(eez, BUFFER)
   int <- sf::st_intersection(buff, map)
 
   ##Remove inland locations
