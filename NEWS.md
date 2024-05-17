@@ -1,4 +1,5 @@
 # createDB 0.0.3
+*updated the clean_area script
 
 # createDB 0.0.2
 *updated the extract function
