@@ -4,24 +4,24 @@
 \alias{extract_accs}
 \title{Load tables from access}
 \usage{
-extract_accs(MDBPATH)
+extract_accs(MDBFILE)
 }
 \arguments{
-\item{MDBPATH}{Path to the access database. Remeber to ass the back slash
-before the first folder name. If you are working in a project the file path
-should only be the part from the project onwards.}
+\item{MDBFILE}{File name of the access database with the extention.}
 }
 \value{
 Returns all tables in the access database as r dataframes
-with the same name.
+with the same names.
 }
 \description{
 This function loads tables in an access database into r as
-dataframes with the same name as the access tables.
+dataframes with the same name as the access tables. If there are multiple
+files with the same name it will take the first instance found, which
+will be the file closest to the data root folder.
 }
 \examples{
 # example code - this won't run but is for you to see the correct formatting
- extract_accs("/data/FishMaster.accdb")
+ extract_accs("FishMaster.accdb")
 
 
 

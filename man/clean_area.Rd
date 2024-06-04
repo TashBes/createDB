@@ -4,7 +4,7 @@
 \alias{clean_area}
 \title{Restrict locations to with the eez}
 \usage{
-clean_area(DF, LON, LAT)
+clean_area(DF, LON, LAT, AREA, BUFFER)
 }
 \arguments{
 \item{DF}{The dataframe to run the function on}
@@ -14,15 +14,20 @@ character in inverted commas.}
 
 \item{LAT}{The column with the latitude values (as decimals). Should be a
 character in inverted commas.}
+
+\item{AREA}{The shape file you want to crop your data to. Should be the name
+of the shape file plus the file extension.}
+
+\item{BUFFER}{A numeric variable of the buffer zone in meters to be used}
 }
 \value{
 Returns the dataframe with only the values that fall with the eez
 }
 \description{
-This function test if locations fall within the marine EEZ with a buffer
-of 2km, and drops all other values.
+This function test if locations fall within an area, with an optional buffer
+and drops all other values.
 }
 \examples{
 # example code
- clean_area(species_locations, "longitude", "Latitude")
+ clean_area(species_locations, "longitude", "Latitude", "EEZ_South_Africa_buffered_beyond_allEEZversions1.shp", 2000)
 }
