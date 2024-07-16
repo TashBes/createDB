@@ -22,7 +22,7 @@ Returns a table of one row with the previouse information
 create the project table
 }
 \examples{
-# example code
- fm_project <- make_dim_project("FishMaster", "FM", "Colin Attwood", "Species records from scientifi publications")
+## example code
+# fm_project <- make_dim_project("FishMaster", "FM", "Colin Attwood", "Species records from scientifi publications")
 
 }

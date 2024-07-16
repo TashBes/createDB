@@ -20,8 +20,8 @@ files with the same name it will take the first instance found, which
 will be the file closest to the data root folder.
 }
 \examples{
-# example code - this won't run but is for you to see the correct formatting
- extract_accs("FishMaster.accdb")
+## example code - this won't run but is for you to see the correct formatting
+# extract_accs("FishMaster.accdb")
 
 
 

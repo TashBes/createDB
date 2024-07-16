@@ -7,7 +7,7 @@
 make_dim_date()
 }
 \value{
-Returns ta table with every date at daily intervals from 1890/01/01
+Returns ta table with every date at daily, yearly, and monthly intervals from 1890/01/01
 to 2025/01/01.
 }
 \description{
@@ -18,7 +18,7 @@ expected to cover. This may need to be extended as this work extends passed
 It is easier to make the table in R so that we can use the lubridate functions
 }
 \examples{
-# example code
- date_tbl <- make_dim_date()
+## example code
+# date_tbl <- make_dim_date()
 
 }

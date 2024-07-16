@@ -28,6 +28,6 @@ This function test if locations fall within an area, with an optional buffer
 and drops all other values.
 }
 \examples{
-# example code
- clean_area(species_locations, "longitude", "Latitude", "EEZ_South_Africa_buffered_beyond_allEEZversions1.shp", 2000)
+## example code
+# clean_area(species_locations, "longitude", "Latitude", "EEZ_South_Africa_buffered_beyond_allEEZversions1.shp", 2000)
 }

@@ -25,7 +25,7 @@ removing any punctuation,
 capitalising the first word.
 }
 \examples{
-# example code
- clean_names(species_names, scientific_name)
+## example code
+# clean_names(species_names, scientific_name)
 
 }

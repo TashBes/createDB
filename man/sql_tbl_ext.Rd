@@ -23,6 +23,6 @@ This function extracts all tables in a postgres database that
 match the string provided
 }
 \examples{
-# example code
- sql_tbl_ext("occur_stage", "fm")
+## example code
+# sql_tbl_ext("occur_stage", "fm")
 }

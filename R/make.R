@@ -26,8 +26,8 @@
 #'@importFrom chron is.weekend
 #'
 #' @examples
-#' # example code
-#'  date_tbl <- make_dim_date()
+#' ## example code
+#' # date_tbl <- make_dim_date()
 #'
 #' @export
 make_dim_date <- function()  {
@@ -99,8 +99,8 @@ make_dim_date <- function()  {
 #' @return Returns a table of one row with the previouse information
 #'
 #' @examples
-#' # example code
-#'  fm_project <- make_dim_project("FishMaster", "FM", "Colin Attwood", "Species records from scientifi publications")
+#' ## example code
+#' # fm_project <- make_dim_project("FishMaster", "FM", "Colin Attwood", "Species records from scientifi publications")
 #'
 #' @export
 make_dim_project<- function(PROJ_NAME, PROJ_ABBR, PROJ_MAN, PROJ_DESC) {
@@ -138,8 +138,8 @@ make_dim_project<- function(PROJ_NAME, PROJ_ABBR, PROJ_MAN, PROJ_DESC) {
 #'@importFrom dplyr  rename
 #'
 #' @examples
-#' # example code
-#'  taxon <- make_dis_spp(fm_fish_abundance_clean, Species)
+#' ## example code
+#' # taxon <- make_dis_spp(fm_fish_abundance_clean, Species)
 #'
 #' @export
 make_dis_spp <- function(DF, SP_COL)  {
@@ -167,8 +167,8 @@ make_dis_spp <- function(DF, SP_COL)  {
 #'@importFrom dplyr anti_join
 #'
 #' @examples
-#' # example code
-#'  taxon_new <- make_rmv_dups(taxon, "dim_taxon")
+#' ## example code
+#' # taxon_new <- make_rmv_dups(taxon, "dim_taxon")
 #'
 #' @export
 make_rmv_dups <- function(DF, SQL_TBL) {
@@ -215,8 +215,8 @@ make_rmv_dups <- function(DF, SQL_TBL) {
 #'@importFrom dplyr rename_all
 #'
 #' @examples
-#' # example code
-#'  fm_taxon <- make_dim_taxon(taxon_new)
+#' ## example code
+#' # fm_taxon <- make_dim_taxon(taxon_new)
 #'
 #' @export
 make_dim_taxon <- function(DF){

@@ -24,8 +24,8 @@
 #'@importFrom rlang :=
 #'
 #' @examples
-#' # example code
-#'  clean_names(species_names, scientific_name)
+#' ## example code
+#' # clean_names(species_names, scientific_name)
 #'
 #' @export
 clean_names <- function(DF, SP_COL) {
@@ -68,8 +68,8 @@ clean_names <- function(DF, SP_COL) {
 #'@importFrom magrittr  %>%
 #'
 #' @examples
-#' # example code
-#'  clean_aphiaid(species_names, scientific_name, "FM")
+#' ## example code
+#' # clean_aphiaid(species_names, scientific_name, "FM")
 #' @export
 clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
 
@@ -139,8 +139,8 @@ clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
 #'@importFrom magrittr  %>%
 #'
 #' @examples
-#' # example code
-#'  clean_area(species_locations, "longitude", "Latitude", "EEZ_South_Africa_buffered_beyond_allEEZversions1.shp", 2000)
+#' ## example code
+#' # clean_area(species_locations, "longitude", "Latitude", "EEZ_South_Africa_buffered_beyond_allEEZversions1.shp", 2000)
 #' @export
 clean_area <- function(DF,LON, LAT, AREA, BUFFER) {
 

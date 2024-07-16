@@ -19,8 +19,8 @@
 #'@importFrom RPostgres  Postgres
 #'
 #' @examples
-#' # example code
-#'  con <- sql_con("occur_stage")
+#' ## example code
+#' # con <- sql_con("occur_stage")
 #' @export
 sql_con <- function(DBNAME) {
 
@@ -68,8 +68,8 @@ sql_con <- function(DBNAME) {
 #'@importFrom RODBC  odbcCloseAll
 #'
 #' @examples
-#' # example code
-#'  sql_tbl_ext("occur_stage", "fm")
+#' ## example code
+#' # sql_tbl_ext("occur_stage", "fm")
 #' @export
 sql_tbl_ext <- function(DBNAME , STR) {
 

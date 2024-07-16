@@ -26,6 +26,6 @@ relevant value. Then run the code, save the file as .Renviron,
 and exit and restart R.
 }
 \examples{
-# example code
- con <- sql_con("occur_stage")
+## example code
+# con <- sql_con("occur_stage")
 }

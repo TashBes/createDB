@@ -26,7 +26,7 @@ any species that don't have an aphiaid.
 Join the WORMS taxon table to the dataframe.
 }
 \examples{
-# example code
- fm_taxon <- make_dim_taxon(taxon_new)
+## example code
+# fm_taxon <- make_dim_taxon(taxon_new)
 
 }

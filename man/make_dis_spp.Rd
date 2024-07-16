@@ -19,7 +19,7 @@ Gets a list of distinct species names form the
 database, and renames the species column
 }
 \examples{
-# example code
- taxon <- make_dis_spp(fm_fish_abundance_clean, Species)
+## example code
+# taxon <- make_dis_spp(fm_fish_abundance_clean, Species)
 
 }

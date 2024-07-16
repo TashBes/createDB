@@ -3,9 +3,9 @@
 #' This function loads tables in an access database into r as
 #' dataframes with the same name as the access tables. If there are multiple
 #' files with the same name it will take the first instance found, which
-#' will be the file closest to the data root folder. 
+#' will be the file closest to the data root folder.
 #'
-#' @param MDBFILE File name of the access database with the extention. 
+#' @param MDBFILE File name of the access database with the extention.
 #' @return Returns all tables in the access database as r dataframes
 #' with the same names.
 #'
@@ -20,8 +20,8 @@
 #'@importFrom magrittr  %>%
 #'
 #' @examples
-#' # example code - this won't run but is for you to see the correct formatting
-#'  extract_accs("FishMaster.accdb")
+#' ## example code - this won't run but is for you to see the correct formatting
+#' # extract_accs("FishMaster.accdb")
 #'
 #'
 #'

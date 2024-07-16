@@ -18,7 +18,7 @@ Returns the dataframe only records that are not currently in the sql table.
 Take out duplicates for loactions, and taxons
 }
 \examples{
-# example code
- taxon_new <- make_rmv_dups(taxon, "dim_taxon")
+## example code
+# taxon_new <- make_rmv_dups(taxon, "dim_taxon")
 
 }
