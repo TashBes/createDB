@@ -54,3 +54,15 @@ plot(pressure)
 ```
 
 In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+
+Here is a typical sequence of calls when using devtools for package development:
+
+Edit one or more files below R/.
+devtools::document() (if you’ve made any changes that impact help files or NAMESPACE)
+devtools::load_all()
+devtools::test()
+devtools::check()
+
+Your package should start with version number 0.0.0.9000. usethis::create_package() starts with this version, by default.
+
+From that point on, you can use usethis::use_version() to increment the package version. When called interactively, with no argument, it presents a helpful menu:
