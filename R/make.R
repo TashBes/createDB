@@ -44,14 +44,14 @@ make_dim_date <- function()  {
   date_full_date <- seq(start_date, end_date,"days")
 
   #add range to table
-  test <- data.frame(date_full_date)
+  day_tbl <- data.frame(date_full_date)
 
   ## add dim_date table columns and populate them using the date range values.
   ## important to known that for date_weekday_weekend true indicates a weekend
   ## and for date_last_date_of_month_indicator true indicates it is the last
   ## day of the month.
 
-  dim_date <-test %>%
+  dim_date <-day_tbl %>%
     dplyr::mutate(date_name = format(date_full_date, "%d%b%Y")) %>%
     dplyr::mutate(date_month_number = lubridate::month(date_full_date)) %>%
     dplyr::mutate(date_month_name = lubridate::month(date_full_date, label = TRUE)) %>%
@@ -60,15 +60,26 @@ make_dim_date <- function()  {
     dplyr::mutate(date_day_of_week_name = lubridate::wday(date_full_date, label=TRUE))%>%
     dplyr::mutate(date_day_of_month_number = lubridate::day(date_full_date))%>%
     dplyr::mutate(date_day_of_year_number = lubridate::yday(date_full_date))%>%
-    dplyr::mutate(date_weekday_weekend = as.character(chron::is.weekend(date_full_date)))%>% #true for weekend
+    dplyr::mutate(date_is_weekend = as.character(chron::is.weekend(date_full_date)))%>% #true for weekend
     dplyr::mutate(date_week_of_year_number = lubridate::isoweek(date_full_date) )%>%
-    dplyr::mutate(date_last_day_of_month_indicator = lubridate::ceiling_date(date_full_date, "month") - lubridate::days(1))%>%
-    dplyr::mutate(date_last_day_of_month_indicator =
-                    dplyr::if_else(date_last_day_of_month_indicator == date_full_date, "TRUE", "FALSE"))%>% #True if it is the last day of the month
+    dplyr::mutate(date_last_day_of_month = lubridate::ceiling_date(date_full_date, "month") - lubridate::days(1))%>%
+    dplyr::mutate(date_last_day_of_month =
+                    dplyr::if_else(date_last_day_of_month == date_full_date, "TRUE", "FALSE"))%>% #True if it is the last day of the month
     dplyr::mutate(date_calendar_quarter_number = lubridate::quarter(date_full_date)) %>%
     dplyr::mutate(date_calendar_year_season_name = dplyr::if_else(date_calendar_quarter_number == 1, "summer",
                                                                   dplyr::if_else(date_calendar_quarter_number == 2, "autumn",
                                                                                  dplyr::if_else(date_calendar_quarter_number == 3, "winter", "spring")), "spring"))
+
+
+  dim_date <- dim_date %>%
+    select(date_calendar_year_number) %>%
+    distinct() %>%
+    bind_rows(dim_date)
+
+  dim_date <- dim_date %>%
+    select(date_calendar_year_number, date_month_number) %>%
+    distinct() %>%
+    bind_rows(dim_date)
 
 }
 
