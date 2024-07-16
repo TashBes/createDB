@@ -72,14 +72,14 @@ make_dim_date <- function()  {
 
 
   dim_date <- dim_date %>%
-    select(date_calendar_year_number) %>%
-    distinct() %>%
-    bind_rows(dim_date)
+    dplyr::select(date_calendar_year_number) %>%
+    dplyr::distinct() %>%
+    dplyrbind_rows(dim_date)
 
   dim_date <- dim_date %>%
-    select(date_calendar_year_number, date_month_number) %>%
-    distinct() %>%
-    bind_rows(dim_date)
+    dplyr::select(date_calendar_year_number, date_month_number) %>%
+    dplyr::distinct() %>%
+    dplyrbind_rows(dim_date)
 
 }
 
