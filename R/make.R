@@ -9,7 +9,7 @@
 #'2025, but extra rows can be added easily enough.
 #'It is easier to make the table in R so that we can use the lubridate functions
 #'
-#' @return Returns ta table with every date at daily intervals from 1890/01/01
+#' @return Returns ta table with every date at daily, yearly, and monthly intervals from 1890/01/01
 #' to 2025/01/01.
 #'
 #'@importFrom dplyr mutate
