@@ -51,7 +51,7 @@ make_dim_date <- function()  {
   ## and for date_last_date_of_month_indicator true indicates it is the last
   ## day of the month.
 
-  dim_date <-day_tbl %>%
+  dim_date_day <-day_tbl %>%
     dplyr::mutate(date_name = format(date_full_date, "%d%b%Y")) %>%
     dplyr::mutate(date_month_number = lubridate::month(date_full_date)) %>%
     dplyr::mutate(date_month_name = lubridate::month(date_full_date, label = TRUE)) %>%
@@ -71,15 +71,18 @@ make_dim_date <- function()  {
                                                                                  dplyr::if_else(date_calendar_quarter_number == 3, "winter", "spring")), "spring"))
 
 
-  dim_date <- dim_date %>%
+  dim_date_year <- dim_date_day %>%
     dplyr::select(date_calendar_year_number) %>%
     dplyr::distinct() %>%
-    dplyr::bind_rows(dim_date)
+    dplyr::bind_rows(dim_date_day)
 
-  dim_date <- dim_date %>%
+  dim_date <- dim_date_day %>%
     dplyr::select(date_calendar_year_number, date_month_number) %>%
     dplyr::distinct() %>%
-    dplyr::bind_rows(dim_date)
+    dplyr::bind_rows(dim_date_year)
+
+  rm(dim_date_day)
+  rm(dim_date_year)
 
 }
 
