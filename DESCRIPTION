@@ -1,6 +1,6 @@
 Package: createDB
 Title: Helps to make a database workflow
-Version: 0.0.5
+Version: 0.0.6
 Authors@R: 
     person("Natasha", "Bessleing", , "tashbes@gmail.com", role = c("aut", "cre"))
 Description: Used to create a marine occurrence database from variouse data collected. The workflow consists of putting the raw data into a staging database using extracting scripts (all functions and scripts use extract_), then cleaning the data and placing it in a clean database, using cleaning scripts (all functions and scripts use clean_), and finally transforming the data into the correct format for the final database and loading it into the occurrence database, using the make scripts, (all functions and scripts use make_).
