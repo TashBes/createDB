@@ -58,7 +58,7 @@ development:
 
 Edit one or more files below R/. devtools::document() (if you’ve made
 any changes that impact help files or NAMESPACE) devtools::load_all()
-devtools::test() devtools::check()
+devtools::test() devtools::check() usethis::use_version()
 
 Your package should start with version number 0.0.0.9000.
 usethis::create_package() starts with this version, by default.

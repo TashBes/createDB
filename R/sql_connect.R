@@ -34,7 +34,7 @@ sql_con <- function(DBNAME) {
                           password = Sys.getenv("DB_PASSWORD"))
   } else {
     con <- DBI::dbConnect(
-      drv = DBI::dbDriver("PostgreSQL"),
+      drv = Postgres(),
       dbname=DBNAME,
       host = Sys.getenv("DB_HOST"),
       port = Sys.getenv("DB_PORT"),
@@ -82,7 +82,7 @@ sql_tbl_ext <- function(DBNAME , STR) {
                           password = Sys.getenv("DB_PASSWORD"))
   } else {
     con <- DBI::dbConnect(
-      drv = DBI::dbDriver("PostgreSQL"),
+      drv = Postgres(),
       dbname = DBNAME,
       host = Sys.getenv("DB_HOST"),
       port = Sys.getenv("DB_PORT"),
@@ -114,7 +114,7 @@ sql_tbl_ext <- function(DBNAME , STR) {
   }
 
   ## close connection
-  odbcCloseAll()
+  RODBC::odbcCloseAll()
 
 }
 
