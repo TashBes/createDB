@@ -26,24 +26,14 @@ sql_con <- function(DBNAME) {
 
 
   ## connect to sql database
-  if (Sys.info()["sysname"] == "Windows") {
+
     con <- DBI::dbConnect(RPostgres::Postgres(),
                           dbname = DBNAME,
                           port = Sys.getenv("DB_PORT"),
                           user = Sys.getenv("DB_USER"),
                           password = Sys.getenv("DB_PASSWORD"))
-  } else {
-    con <- DBI::dbConnect(
-      drv = Postgres(),
-      dbname=DBNAME,
-      host = Sys.getenv("DB_HOST"),
-      port = Sys.getenv("DB_PORT"),
-      user = Sys.getenv("DB_USER"),
-      password = Sys.getenv("DB_PASSWORD")
-    )
-  }
-  # assign("con", con, envir=.GlobalEnv)
 }
+  # assign("con", con, envir=.GlobalEnv)
 
 
 #' extract all tables
@@ -73,22 +63,11 @@ sql_con <- function(DBNAME) {
 #' @export
 sql_tbl_ext <- function(DBNAME , STR) {
 
-
-  if (Sys.info()["sysname"] == "Windows") {
     con <- DBI::dbConnect(RPostgres::Postgres(),
                           dbname = DBNAME,
                           port = Sys.getenv("DB_PORT"),
                           user = Sys.getenv("DB_USER"),
                           password = Sys.getenv("DB_PASSWORD"))
-  } else {
-    con <- DBI::dbConnect(
-      drv = Postgres(),
-      dbname = DBNAME,
-      host = Sys.getenv("DB_HOST"),
-      port = Sys.getenv("DB_PORT"),
-      user = Sys.getenv("DB_USER"),
-      password = Sys.getenv("DB_PASSWORD"))
-  }
 
   # con <- sql_con(DBNAME) #could use my other function, but this may break it.
   ## the first method is for windows and the second for linux
