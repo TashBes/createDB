@@ -86,9 +86,9 @@ make_dim_date <- function()  {
     dplyr::distinct() %>%
     dplyr::bind_rows(dim_date_month)
 
-  rm(dim_date_day)
-  rm(dim_date_month)
-  rm(dim_date_year)
+  # rm(dim_date_day)
+  # rm(dim_date_month)
+  # rm(dim_date_year)
 
 }
 
