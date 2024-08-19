@@ -19,6 +19,6 @@ It is easier to make the table in R so that we can use the lubridate functions
 }
 \examples{
 ## example code
-# date_tbl <- make_dim_date()
+# date_tbl <- make_dim_date
 
 }
