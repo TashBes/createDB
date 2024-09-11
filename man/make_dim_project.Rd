@@ -4,16 +4,28 @@
 \alias{make_dim_project}
 \title{create the project table}
 \usage{
-make_dim_project(PROJ_NAME, PROJ_ABBR, PROJ_MAN, PROJ_DESC)
+make_dim_project(
+  PROJ_NAME,
+  PROJ_SOURCE,
+  PROJ_MAN,
+  PROJ_DESC,
+  PROJ_TIME,
+  PROJ_RECRD,
+  PROJ_CIT,
+  PROJ_URL,
+  PROJ_DR,
+  PROJ_GUIDNC,
+  PROJ_RECEIV
+)
 }
 \arguments{
 \item{PROJ_NAME}{The name of the project where the records where created}
 
-\item{PROJ_ABBR}{The abbreviation for the project, usually 3 letters}
-
 \item{PROJ_MAN}{The manager responsible for maintaining the records, or who can be contacted for help with any queries}
 
 \item{PROJ_DESC}{A short description of the project.}
+
+\item{PROJ_ABBR}{The abbreviation for the project, usually 3 letters}
 }
 \value{
 Returns a table of one row with the previouse information
