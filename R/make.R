@@ -110,15 +110,30 @@ make_dim_date <- function()  {
 #' # fm_project <- make_dim_project("FishMaster", "FM", "Colin Attwood", "Species records from scientifi publications")
 #'
 #' @export
-make_dim_project<- function(PROJ_NAME, PROJ_ABBR, PROJ_MAN, PROJ_DESC) {
+make_dim_project<- function(PROJ_NAME, PROJ_SOURCE, PROJ_MAN, PROJ_DESC, PROJ_TIME, PROJ_RECRD, PROJ_CIT, PROJ_URL, PROJ_DR, PROJ_GUIDNC, PROJ_RECEIV) {
 
-  project_name <- c(PROJ_NAME)
+  project_title <- c(PROJ_NAME)
 
-  project_abbreviation <- c(PROJ_ABBR)
+  project_source <- c(PROJ_ABBR)
 
   project_manager <- c(PROJ_MAN)
 
   project_description <- c(PROJ_DESC)
+
+  project_time_period <- c(PROJ_TIME)
+
+  project_records <- c(PROJ_RECRD)
+
+  project_citation <- c(PROJ_CIT)
+
+  project_online_repository <- c(PROJ_URL)
+
+  project_data_restriction <- c(PROJ_DR)
+
+  project_data_guidance <- c(PROJ_GUIDNC)
+
+  project_date_recieved <- c(PROJ_RECEIV)
+
 
 
   fm_project <- data.frame(project_name,
