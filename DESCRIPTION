@@ -21,6 +21,12 @@ Imports:
     RPostgres,
     lubridate,
     chron,
-    tidyr
+    tidyr,
+    lifecycle,
+    stats,
+    ritis,
+    crul,
+    xml2,
+    jsonlite
 URL: https://github.com/TashBes/createDB
 BugReports: https://github.com/TashBes/createDB/issues
