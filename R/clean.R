@@ -64,7 +64,6 @@ clean_names <- function(DF, SP_COL) {
 #'@importFrom dplyr  pull
 #'@importFrom dplyr  mutate
 #'@importFrom dplyr  left_join
-#'@importFrom taxize  get_wormsid
 #'@importFrom magrittr  %>%
 #'
 #' @examples
@@ -89,7 +88,7 @@ clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
   ## first name.
 
   ##retrieve the aphia ID's from the WORMS website
-  worms <- taxize::get_wormsid(sp_name, ask = T, marine_only = T)
+  worms <- createDB::get_wormsid(sp_name, ask = T, marine_only = T)
 
   ## isolate the species not found so that we have a record of them
   missing <- taxon %>%

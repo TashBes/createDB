@@ -226,7 +226,6 @@ make_rmv_dups <- function(DF, SQL_TBL) {
 #' @param DF The dataframe to run the function on
 #' @return Returns a table of taxon information for each taxon records in the dataset
 #'
-#'@importFrom taxize  classification
 #'@importFrom magrittr  %>%
 #'@importFrom dplyr select
 #'@importFrom dplyr group_by
@@ -243,7 +242,7 @@ make_rmv_dups <- function(DF, SQL_TBL) {
 #' @export
 make_dim_taxon <- function(DF){
 
-  dta_tax <- taxize::classification(unique(DF$aphiaid), db = "worms") %>%
+  dta_tax <- createDB::classification(unique(DF$aphiaid), db = "worms") %>%
     rbind() %>%
     dplyr::select(-id) %>%
     dplyr::group_by(query, rank) %>%

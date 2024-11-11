@@ -15,7 +15,6 @@ Imports:
     Hmisc,
     stringr,
     rlang,
-    taxize,
     sf,
     DBI,
     RPostgres,
@@ -27,6 +26,7 @@ Imports:
     ritis,
     crul,
     xml2,
-    jsonlite
+    jsonlite,
+    checkmate
 URL: https://github.com/TashBes/createDB
 BugReports: https://github.com/TashBes/createDB/issues
