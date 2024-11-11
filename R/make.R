@@ -234,6 +234,7 @@ make_rmv_dups <- function(DF, SQL_TBL) {
 #'@importFrom dplyr rename
 #'@importFrom dplyr left_join
 #'@importFrom dplyr rename_all
+#'@importFrom taxize classification
 #'
 #' @examples
 #' ## example code
@@ -242,7 +243,7 @@ make_rmv_dups <- function(DF, SQL_TBL) {
 #' @export
 make_dim_taxon <- function(DF){
 
-  dta_tax <- createDB::classification(unique(DF$aphiaid), db = "worms") %>%
+  dta_tax <- taxize::classification(unique(DF$aphiaid), db = "worms") %>%
     rbind() %>%
     dplyr::select(-id) %>%
     dplyr::group_by(query, rank) %>%

@@ -29,6 +29,7 @@ Imports:
     jsonlite,
     checkmate,
     jsonlite,
-    httr
+    httr,
+    taxize
 URL: https://github.com/TashBes/createDB
 BugReports: https://github.com/TashBes/createDB/issues
