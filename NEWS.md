@@ -1,4 +1,5 @@
 # createDB 1.0.0
+*added taxize functions
 
 # createDB 0.0.10
 
