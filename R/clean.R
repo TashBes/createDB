@@ -57,14 +57,13 @@ clean_names <- function(DF, SP_COL) {
 #' @param DF_ABBR Dataset abbreviation. Must be a character in inverted commas
 #' @return Returns the dataframe with the aphia ID's as a new column
 #'
-#'@importFrom dplyr  filter
 #'@importFrom dplyr  ungroup
 #'@importFrom dplyr  distinct
 #'@importFrom dplyr  arrange
 #'@importFrom dplyr  pull
-#'@importFrom dplyr  mutate
-#'@importFrom dplyr  left_join
+#'@importFrom dplyr bind_rows
 #'@importFrom magrittr  %>%
+#'@importFrom jsonlite fromJSON
 #'
 #' @examples
 #' ## example code
@@ -81,30 +80,60 @@ clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
   sp_name <- dplyr::pull(taxon, {{SP_COL}})
 
   ## Get the matching ahpia ID's for each taxon in the dataset from the
-  ## online worms directory. This function only returns an ID if the name
-  ## is correct and classified as marine. If there is ambiguity the user
-  ## is prompted to chose the WORMS name to take. As a rule chose the name
-  ## that says accepted. If neither are accepted or both are choose the
-  ## first name.
+  ## online worms directory.
 
-  ##retrieve the aphia ID's from the WORMS website
-  worms <- createDB::get_wormsid(sp_name, ask = T, marine_only = T)
+  worms = data.frame()
 
-  ## isolate the species not found so that we have a record of them
-  missing <- taxon %>%
-    dplyr::filter(is.na(worms)) %>%
-    dplyr::mutate(dataset = {{DF_ABBR}})
+  for (i in sp_name) {
+    #Convert the sp_name to a valid REST-url
+    urlNamesPart <- ""
+    for (index in 1:length(i)) {
+      urlNamesPart <- sprintf("%s&scientificnames[]=%s", urlNamesPart, i[index]);
+    }
 
-  assign("missing", missing, envir=.GlobalEnv)
+    #The url can contain special characters that need to be converted
+    urlNamesPart <- URLencode(urlNamesPart)
 
-  aphiaid <- taxon %>%
-    dplyr::mutate(aphiaid = worms) %>%
-    dplyr::mutate(aphiaid = as.character(aphiaid))
+    #The dyanmic build of the URL causes an obsolete '&' at the beginning of the string, so remove it
+    urlNamesPart <- substring(urlNamesPart, 2)
 
-  DF <- DF %>%
-    dplyr::left_join(aphiaid) %>%
-    dplyr::filter(!is.na(aphiaid))
+    #Build the final REST-url
+    url <- sprintf("http://www.marinespecies.org/rest/AphiaRecordsByMatchNames?%s", urlNamesPart);
 
+    #Get the actual data from the URL
+    matches <- jsonlite::fromJSON(url)
+
+    #Handle the data (each requested name has an list of results)
+    for (matchesindex in 1:length(i)) {
+      #Get the results for the current index
+      currentResultList = matches[[matchesindex]]
+
+      #Get the number of list entries for the first column
+      numberOfResults <- length(currentResultList[[1]])
+
+      #Handle empty data due to no matches found
+      if (is.na(currentResultList[[1]][[1]])) {
+        numberOfResults <- 0
+      }
+      print(sprintf("%d Result(s) found for %s", numberOfResults, i[matchesindex]))
+      if (numberOfResults > 0) {
+        for (listentry in 1:numberOfResults) {
+          print(sprintf("ID: %d, SCIENTIFICNAME: %s, MATCH_TYPE: %s",
+                        currentResultList[["AphiaID"]][listentry],
+                        currentResultList[["scientificname"]][listentry],
+                        currentResultList[["match_type"]][listentry]
+          ));
+        }
+      }
+    }
+
+    output <- matches %>%
+      dplyr::bind_rows()
+
+    worms = rbind(worms, output)
+    assign("worms", worms, envir=.GlobalEnv)
+
+  }
 }
 
 

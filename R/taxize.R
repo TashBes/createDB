@@ -1019,7 +1019,7 @@ get_wormsid <- function(sci_com, searchtype = "scientific", marine_only = TRUE,
   checkmate::assert(fuzzy, "logical")
   checkmate::assert(accepted, "logical")
   checkmate::assert(ask, "logical")
-  checkmate::assert_rows(rows)
+  assert_rows(rows)
   if (!is.null(query)) {
     lifecycle::deprecate_warn(when = "v0.9.97", what = "get_wormsid(query)", with = "get_wormsid(sci_com)")
     sci_com <- query
