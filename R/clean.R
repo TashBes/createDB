@@ -69,15 +69,15 @@ clean_names <- function(DF, SP_COL) {
 #' ## example code
 #' # clean_aphiaid(species_names, scientific_name, "FM")
 #' @export
-clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
+clean_aphiaid <- function (DF, SP_COL) {
 
   ##get a list of distinct species names
-  taxon <- DF %>%
-    dplyr::ungroup() %>%
-    dplyr::distinct({{SP_COL}}) %>%
-    dplyr::arrange(dplyr::desc({{SP_COL}}))
+#  taxon <- DF %>%
+#    dplyr::ungroup() %>%
+ #   dplyr::distinct({{SP_COL}}) %>%
+ #   dplyr::arrange(dplyr::desc({{SP_COL}}))
 
-  sp_name <- dplyr::pull(taxon, {{SP_COL}})
+  sp_name <- dplyr::pull(DF, {{SP_COL}})
 
   ## Get the matching ahpia ID's for each taxon in the dataset from the
   ## online worms directory.
