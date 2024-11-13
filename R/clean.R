@@ -47,94 +47,6 @@ clean_names <- function(DF, SP_COL) {
 }
 
 
-###
-#'get aphia ID's
-#'
-#' This function matches species names in a dataframe to worms id numbers
-#'
-#' @param DF The dataframe to run the function on
-#' @param SP_COL The column with the species names
-#' @param DF_ABBR Dataset abbreviation. Must be a character in inverted commas
-#' @return Returns the dataframe with the aphia ID's as a new column
-#'
-#'@importFrom dplyr  ungroup
-#'@importFrom dplyr  distinct
-#'@importFrom dplyr  arrange
-#'@importFrom dplyr  pull
-#'@importFrom dplyr bind_rows
-#'@importFrom magrittr  %>%
-#'@importFrom jsonlite fromJSON
-#'
-#' @examples
-#' ## example code
-#' # clean_aphiaid(species_names, scientific_name, "FM")
-#' @export
-clean_aphiaid <- function (DF, SP_COL, DF_ABBR) {
-
-  ##get a list of distinct species names
-  taxon <- DF %>%
-    dplyr::ungroup() %>%
-    dplyr::distinct({{SP_COL}}) %>%
-    dplyr::arrange(dplyr::desc({{SP_COL}}))
-
-  sp_name <- dplyr::pull(taxon, {{SP_COL}})
-
-  ## Get the matching ahpia ID's for each taxon in the dataset from the
-  ## online worms directory.
-
-  worms = data.frame()
-
-  for (i in sp_name) {
-    #Convert the sp_name to a valid REST-url
-    urlNamesPart <- ""
-    for (index in 1:length(i)) {
-      urlNamesPart <- sprintf("%s&scientificnames[]=%s", urlNamesPart, i[index]);
-    }
-
-    #The url can contain special characters that need to be converted
-    urlNamesPart <- URLencode(urlNamesPart)
-
-    #The dyanmic build of the URL causes an obsolete '&' at the beginning of the string, so remove it
-    urlNamesPart <- substring(urlNamesPart, 2)
-
-    #Build the final REST-url
-    url <- sprintf("http://www.marinespecies.org/rest/AphiaRecordsByMatchNames?%s", urlNamesPart);
-
-    #Get the actual data from the URL
-    matches <- jsonlite::fromJSON(url)
-
-    #Handle the data (each requested name has an list of results)
-    for (matchesindex in 1:length(i)) {
-      #Get the results for the current index
-      currentResultList = matches[[matchesindex]]
-
-      #Get the number of list entries for the first column
-      numberOfResults <- length(currentResultList[[1]])
-
-      #Handle empty data due to no matches found
-      if (is.na(currentResultList[[1]][[1]])) {
-        numberOfResults <- 0
-      }
-      print(sprintf("%d Result(s) found for %s", numberOfResults, i[matchesindex]))
-      if (numberOfResults > 0) {
-        for (listentry in 1:numberOfResults) {
-          print(sprintf("ID: %d, SCIENTIFICNAME: %s, MATCH_TYPE: %s",
-                        currentResultList[["AphiaID"]][listentry],
-                        currentResultList[["scientificname"]][listentry],
-                        currentResultList[["match_type"]][listentry]
-          ));
-        }
-      }
-    }
-
-    output <- matches %>%
-      dplyr::bind_rows()
-
-    worms = rbind(worms, output)
-    assign("worms", worms, envir=.GlobalEnv)
-
-  }
-}
 
 
 ##
@@ -180,7 +92,7 @@ clean_area <- function(DF,LON, LAT, AREA, BUFFER) {
     sf::st_set_crs(4326) %>%
     sf::st_transform(sf::st_crs(eez))
 
-  ##buffer the eez by 20km
+  ##buffer the eez
   buff <- sf::st_buffer(eez, BUFFER)
   int <- sf::st_intersection(buff, map)
 

@@ -21,15 +21,9 @@ Imports:
     lubridate,
     chron,
     tidyr,
-    lifecycle,
-    stats,
-    ritis,
-    crul,
-    xml2,
-    jsonlite,
-    checkmate,
     jsonlite,
     httr,
-    taxize
+    worrms
+    
 URL: https://github.com/TashBes/createDB
 BugReports: https://github.com/TashBes/createDB/issues
