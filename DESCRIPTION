@@ -24,6 +24,5 @@ Imports:
     jsonlite,
     httr,
     worrms
-    
 URL: https://github.com/TashBes/createDB
 BugReports: https://github.com/TashBes/createDB/issues

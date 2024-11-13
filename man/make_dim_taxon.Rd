@@ -4,7 +4,7 @@
 \alias{make_dim_taxon}
 \title{make taxon table}
 \usage{
-make_dim_taxon(DF)
+make_dim_taxon(AphiaID)
 }
 \arguments{
 \item{DF}{The dataframe to run the function on}
