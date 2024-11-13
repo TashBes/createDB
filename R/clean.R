@@ -48,7 +48,6 @@ clean_names <- function(DF, SP_COL) {
 
 
 
-
 ##
 #'Restrict locations to with the eez
 #'
